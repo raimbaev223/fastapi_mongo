@@ -1,0 +1,5 @@
+fastapi==0.73.0
+uvicorn==0.17.4
+motor==3.0.0
+pidantic==0.1.2
+pydantic[email]
