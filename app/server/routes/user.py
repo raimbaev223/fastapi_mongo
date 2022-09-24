@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Body
 from fastapi.encoders import jsonable_encoder
 
-from ..database import (
+from ..models.user_entity import (
     add_user,
     delete_user,
     retrieve_user,
@@ -70,5 +70,3 @@ async def delete_user_data(id: int):
     return ErrorResponseModel(
         "An error occurred", 404, "User with id {0} doesn't exist".format(id)
     )
-
-
