@@ -4,8 +4,8 @@ from fastapi.encoders import jsonable_encoder
 from ..models.user_entity import (
     add_user,
     delete_user,
-    retrieve_user,
-    retrieve_users,
+    get_user,
+    get_all_users,
     update_user,
 )
 from ..models.user import (
@@ -29,8 +29,8 @@ async def add_user_data(user: UserSchema = Body(...)):
 
 
 @router.get("/", response_description="Users retrieved")
-async def get_users():
-    users = await retrieve_users()
+async def get_users(skip: int = 0, limit: int = 20):
+    users = await get_all_users(skip, limit)
     if users:
         return ResponseModel(users, "User data retrieved successfully")
     return ResponseModel(users, "Empty list returned")
@@ -38,7 +38,7 @@ async def get_users():
 
 @router.get("/{id}", response_description="User data retrieved")
 async def get_user_data(id: int):
-    user = await retrieve_user(id)
+    user = await get_user(id)
     if user:
         return ResponseModel(user, "User data retrieved successfully")
     return ErrorResponseModel("An error occurred.", 404, "User doesn't exist.")
@@ -56,7 +56,7 @@ async def update_user_data(id: int, req: UpdateUserModel = Body(...)):
     return ErrorResponseModel(
         "An error occurred",
         404,
-        "There was an error updating the student data.",
+        "There was an error updating the user data.",
     )
 
 

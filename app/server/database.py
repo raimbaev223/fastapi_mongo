@@ -9,7 +9,4 @@ mongo_port = os.environ["MONGO_PORT"]
 mongo_details = f'{mongo_host}:{mongo_port}'
 client = motor.motor_asyncio.AsyncIOMotorClient(mongo_details)
 database = client.chatFastApi
-
-print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
-print(f'Connection with "{mongo_host}:{mongo_port}" \nsuccessfully established')
-print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+print('<<<<<< Connection with mongoDB successfully established >>>>>>')

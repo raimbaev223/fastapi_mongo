@@ -13,7 +13,7 @@ class UserSchema(BaseModel):
             "example": {
                 "email": "jdoe@x.ex",
                 "userId": 20012,
-                "isDeleted": False,
+                "isDeleted": False
             }
         }
 
@@ -28,7 +28,7 @@ class UpdateUserModel(BaseModel):
             "example": {
                 "email": "jdoe@x.ex",
                 "userId": 20012,
-                "isDeleted": False,
+                "isDeleted": False
             }
         }
 
@@ -42,4 +42,8 @@ def ResponseModel(data, message):
 
 
 def ErrorResponseModel(error, code, message):
-    return {"error": error, "code": code, "message": message}
+    return {
+        "error": error,
+        "code": code,
+        "message": message,
+    }
